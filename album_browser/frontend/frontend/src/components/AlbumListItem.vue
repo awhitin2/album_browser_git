@@ -1,15 +1,15 @@
 <template>
     <button class="list-group-item list-group-item-action">
-        <div class = 'container-fluid float-left'>
+        <div class = 'container-fluid'>
             <div class = 'row align-items-center'>
             <div class = 'col-1 text-left '>      
                 <h3 class='text-left'>{{ index }}</h3>
             </div>
-            <div class = 'col-2'>      
-                <img :src="imgSrc" class="img-thumbnail"></img>
+            <div class = 'col-1'>      
+                <img :src="imgSrcSmall" class="img-thumbnail"></img>
             </div>
-            <div class = 'col text-left'>      
-                <h3 class='text-center'>{{ albumName }} -- Artist Name</h3>
+            <div class = 'col'>      
+                <h3 class='text-left'>{{ albumName }} -- {{ artistName }}</h3>
             </div>
             <div class = 'col-1 ml-auto'>   
                 <div class='row'>
@@ -35,8 +35,15 @@
   export default {
     props: {
       albumName: { required: true, type: String },
+      albumLink: { required: false, type: String },
+      artistName: { required: true, type: String },
+      artistLink: { required: false, type: String },
       favorited: { default: false, type: Boolean },
-      imgSrc: {required: true, type: String},
+      imgSrcSmall: {required: false, type: String},
+      imgSrcLarge: {required: false, type: String},
+      price: {required: false, type: String},
+      category: {required: false, type: String},
+      releaseDate: {required: false, type: String},
       index: {required: true, type: Number}
     },
     data() {
