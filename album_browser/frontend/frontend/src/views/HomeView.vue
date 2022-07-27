@@ -1,13 +1,11 @@
 <template>
   <div class="home">
-    <div v-for='item in albums' :key='item.index'
-    class="list-group">
-      <album-list-item 
-      :index = 'item.index' 
-      :albumName = 'item.albumName' 
-      :artistName = 'item.artistName'
-      :imgSrcSmall = 'item.imgSrcSmall' 
-      :favorited = 'item.favorited'>
+    <div class="list-group" v-for='item in albums' :key='item.index'>
+      <album-list-item  :index = 'item.index' 
+                        :albumName = 'item.albumName' 
+                        :artistName = 'item.artistName'
+                        :imgSrcSmall = 'item.imgSrcSmall' 
+                        :favorited = 'item.favorited'>
       </album-list-item>
     </div>
   </div>
@@ -26,7 +24,7 @@ export default {
   },
   data() {
     return {
-      albums: ''
+      albums: []
     };
   },
   methods : {

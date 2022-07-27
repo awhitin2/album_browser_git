@@ -1,28 +1,35 @@
 <template>
-    <button class="list-group-item list-group-item-action">
+    <button   class="list-group-item list-group-item-action"
+                type='button' 
+                v-b-modal="'my-modal'">
         <div class = 'container-fluid'>
             <div class = 'row align-items-center'>
-            <div class = 'col-1 text-left '>      
-                <h3 class='text-left'>{{ index }}</h3>
-            </div>
-            <div class = 'col-1'>      
-                <img :src="imgSrcSmall" class="img-thumbnail"></img>
-            </div>
-            <div class = 'col'>      
-                <h3 class='text-left'>{{ albumName }} -- {{ artistName }}</h3>
-            </div>
-            <div class = 'col-1 ml-auto'>   
-                <div class='row'>
-                <div class = 'col'>
-                    <i class="bi bi-heart-fill float-right"></i>  
-                </div> 
+                <div class = 'col-1'>      
+                    <h4 class='text-light text-center'>{{ index }}</h4>
                 </div>
-                <div class='row'>
-                <div class = 'col'>
-                    <i class="bi bi-share-fill float-right"></i>  
-                </div> 
+                <div class = 'col-1'>      
+                    <img :src="imgSrcSmall" class="img-thumbnail mx-auto d-block"></img>
                 </div>
-            </div>
+                <div class = 'col'>     
+                    <div class='row'> 
+                        <div class='col'>
+                            <h3 class='text-left text-light'>{{ albumName }}</h3>
+                            <h5 class='text-left text-warning'>{{ artistName }}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class = 'col-1 ml-auto'>   
+                    <div class='row'>
+                        <div class = 'col'>
+                            <i class="bi bi-heart float-right"></i>  
+                        </div> 
+                    </div>
+                    <div class='row' width='100%'>
+                        <div class = 'col'>
+                            <i class="bi bi-share float-right"></i>  
+                        </div> 
+                    </div>
+                </div>
             </div>
         </div>
     </button>
@@ -32,7 +39,10 @@
 <script>
   import uniqueId from 'lodash.uniqueid';
 
+
   export default {
+    components: {
+    },
     props: {
       albumName: { required: true, type: String },
       albumLink: { required: false, type: String },
