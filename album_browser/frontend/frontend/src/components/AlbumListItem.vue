@@ -1,29 +1,31 @@
 <template>
-  <div class = 'container-fluid float-left'>
-    <div class = 'row align-items-center'>
-      <div class = 'col-1 text-left '>      
-        <h3 class='text-left'>{{ index }}</h3>
-      </div>
-      <div class = 'col-2'>      
-        <img :src="imgSrc" class="img-thumbnail"></img>
-      </div>
-      <div class = 'col text-left'>      
-        <h3 class='text-center'>{{ albumName }} -- Artist Name</h3>
-      </div>
-      <div class = 'col-1 ml-auto'>   
-        <div class='row'>
-          <div class = 'col'>
-              <i class="bi bi-heart-fill float-right"></i>  
-          </div> 
+    <button class="list-group-item list-group-item-action">
+        <div class = 'container-fluid float-left'>
+            <div class = 'row align-items-center'>
+            <div class = 'col-1 text-left '>      
+                <h3 class='text-left'>{{ index }}</h3>
+            </div>
+            <div class = 'col-2'>      
+                <img :src="imgSrc" class="img-thumbnail"></img>
+            </div>
+            <div class = 'col text-left'>      
+                <h3 class='text-center'>{{ albumName }} -- Artist Name</h3>
+            </div>
+            <div class = 'col-1 ml-auto'>   
+                <div class='row'>
+                <div class = 'col'>
+                    <i class="bi bi-heart-fill float-right"></i>  
+                </div> 
+                </div>
+                <div class='row'>
+                <div class = 'col'>
+                    <i class="bi bi-share-fill float-right"></i>  
+                </div> 
+                </div>
+            </div>
+            </div>
         </div>
-        <div class='row'>
-          <div class = 'col'>
-              <i class="bi bi-share-fill float-right"></i>  
-          </div> 
-        </div>
-      </div>
-    </div>
-  </div>
+    </button>
 </template>
 
 

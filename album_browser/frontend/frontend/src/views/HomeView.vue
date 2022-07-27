@@ -1,10 +1,9 @@
 <template>
   <div class="home">
-    <ul class="list-group">
-      <li v-for='(item, index) in albums' :key='item.albumName' class = list-group-item>
-        <album-list-item :index = 'index+1' :albumName = 'item.albumName' :imgSrc = 'item.imgSrc' :favorited = 'item.favorited'></album-list-item>
-      </li>
-    </ul>
+    <div v-for='(item, index) in albums' :key='item.albumName'
+    class="list-group">
+      <album-list-item :index = 'index+1' :albumName = 'item.albumName' :imgSrc = 'item.imgSrc' :favorited = 'item.favorited'></album-list-item>
+    </div>
   </div>
 </template>
 
