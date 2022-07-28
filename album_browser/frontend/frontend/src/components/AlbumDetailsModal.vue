@@ -14,10 +14,10 @@
         </div>
         <div class = 'col'>
           <div class = 'row'>
-            <h1 class='display-6 text-center'>{{albumName}}</h1>
+            <h1 class='display-6 text-center'><a class = 'text-white' :href='albumLink' target="_blank">{{albumName}}</a></h1>
           </div>
           <div class = 'row'>
-            <h4 class='text-center text-info'>{{artistName}}</h4>
+            <h4 class='text-center'><a class = 'text-info' :href='artistLink' target="_blank">{{artistName}}</a></h4>
           </div>
           <div class = 'row'>
             <h6 class='text-center text-light'>{{category}}</h6>

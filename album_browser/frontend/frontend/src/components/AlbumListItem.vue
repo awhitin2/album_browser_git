@@ -11,6 +11,9 @@
                     <div class = 'col-1'>      
                         <img :src="imgSrcSmall" class="img-thumbnail mx-auto d-block"></img>
                     </div>
+                    <div class = 'col-1'>      
+                        <button type="button" class="btn btn-primary z-index:10">Click</button>
+                    </div>
                     <div class = 'col'>     
                         <div class='row'> 
                             <div class='col'>
@@ -81,14 +84,3 @@
   }
   };
 </script>
-
-// <!-- Add icon library -->
-// <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-// <!-- Use an element to toggle between a like/dislike icon -->
-// <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
-
-
-// function myFunction(x) {
-//   x.classList.toggle("fa-thumbs-down");
-// }

@@ -22,7 +22,6 @@ def _parse_albums_reponse(json: dict)->list[dict]:
             'albumLink': entry['link']['attributes']['href'],
             'albumId' : entry['id']['attributes']['im:id'],
             'artistName': entry['im:artist']['label'],
-            'artistLink': "entry['im:artist']['attributes']['href']",
             'imgSrcSmall': entry['im:image'][1]['label'],
             'imgSrcLarge' : entry['im:image'][2]['label'],
             'price' : entry['im:price']['label'],
@@ -30,9 +29,15 @@ def _parse_albums_reponse(json: dict)->list[dict]:
             'releaseDate' : entry['im:releaseDate']['attributes']['label'],
             'favorited': False,
         }
+        try:
+            album_info['artistLink'] = entry['im:artist']['attributes']['href']
+        except KeyError:
+            album_info['artistLink'] = ''
+
         albums.append(album_info)
     return albums
     
+fetch_albums()
 
 def fetch_songs(url: str = 'https://music.apple.com/us/album/entering-heaven-alive/1624743251?uo=2')->list[dict]:
     resp = requests.get(url)
@@ -60,5 +65,3 @@ def _parse_songs_reponse(soup: bs4.BeautifulSoup)->list[dict]:
         song_info.append(info_dict)
 
     return song_info
-
-fetch_songs()
