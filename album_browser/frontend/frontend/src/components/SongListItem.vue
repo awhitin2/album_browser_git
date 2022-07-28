@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class = 'col-1'>
-                    <h6 class='text-light'>4:21</h6>
+                    <h6 class='text-light'>{{ duration }}</h6>
                 </div>
                 <div class = 'col-1'>
                     <i class="bi bi-share"></i>
@@ -33,7 +33,8 @@
   export default {
     props: {
       songName: { required: true, type: String },
-      index: {required: true, type: Number}
+      index: {required: true, type: Number},
+      duration: {required: true, type: String}
     },
     data() {
       return {

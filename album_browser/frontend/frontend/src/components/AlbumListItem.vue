@@ -15,7 +15,7 @@
                         <div class='row'> 
                             <div class='col'>
                                 <h3 class='text-left text-light'>{{ albumName }}</h3>
-                                <h5 class='text-left text-warning'>{{ artistName }}</h5>
+                                <h6 class='text-left text-light'>{{ artistName }}</h6>
                             </div>
                         </div>
                     </div>
@@ -37,6 +37,7 @@
         <album-details-modal    :modalId="modalId"
                                 :albumName = "albumName"
                                 :albumLink = "albumLink"
+                                :albumId = "albumId"
                                 :artistName = "artistName"
                                 :artistLink = "artistLink"
                                 :imgSrcLarge = "imgSrcLarge"
@@ -61,6 +62,7 @@
     props: {
       albumName: { required: true, type: String },
       albumLink: { required: true, type: String },
+      albumId: { required: true, type: String },
       artistName: { required: true, type: String },
       artistLink: { required: true, type: String },
       favorited: { default: true, type: Boolean },

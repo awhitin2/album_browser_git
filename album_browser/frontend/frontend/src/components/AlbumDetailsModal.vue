@@ -39,8 +39,9 @@
       <div class = 'row align-items-center'>
         <div class = 'col'>
           <div class="list-group" v-for='song in songs' :key='song.index'>
-            <song-list-item  :index = 'song.index' 
-                              :songName = 'song.songName'>
+            <song-list-item :index = 'song.index' 
+                            :songName = 'song.songName'
+                            :duration = 'song.duration'>
             </song-list-item>
           </div>
         </div>
@@ -50,6 +51,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import SongListItem from "@/components/SongListItem.vue";
 
 export default {
@@ -58,6 +60,7 @@ export default {
       modalId: { required: true, type: String },
       albumName: { required: true, type: String },
       albumLink: { required: true, type: String },
+      albumId: { required: true, type: String },
       artistName: { required: true, type: String },
       artistLink: { required: true, type: String },
       imgSrcLarge: {required: true, type: String},
@@ -70,39 +73,24 @@ export default {
   },
   data() {
     return {
-      songs: [
-        {
-          index: 1,
-          songName: 'Here comes the sun'
-        }
-      ]
+      songs: []
     };
   },
-  // methods : {
-    // getAlbums() {
-    //     const path = 'http://localhost:5000/albums';
-    //     axios.get(path)
-    //     .then((res) => {
-    //         console.log(res.data)
-    //         console.log(typeof res.data)
-    //         this.albums = res.data.albums;
-    //         console.log(this.albums)
-    //     })
-    //     .catch((err)=> {
-    //         console.error(err)
-    //     })
-    // }
-  // },
-  // created(){
-  //     this.getAlbums();
-  // }
+  methods : {
+    getSongs() {
+        const path = 'http://localhost:5000/songs';
+        axios.get(path, { params: { answer: this.albumLink } })
+        .then((res) => {
+            this.songs = res.data.songs;
+        })
+        .catch((err)=> {
+            console.error(err)
+        })
+    }
+  },
+  mounted(){
+      this.getSongs();
+  }
 }
 </script>
 
-
-      // <!-- Using value -->
-    // <b-button type='button' 
-    //           class='btn btn-success' 
-    //           v-b-modal="'my-modal'">Show Modal</b-button>
-
-    // <!-- The modal -->

@@ -4,6 +4,7 @@
       <album-list-item  :index = 'item.index' 
                         :albumName = 'item.albumName' 
                         :albumLink = 'item.albumLink' 
+                        :albumId = 'item.albumId'
                         :artistName = 'item.artistName'
                         :artistLink = 'item.artistLink'
                         :imgSrcSmall = 'item.imgSrcSmall' 
@@ -38,10 +39,7 @@ export default {
         const path = 'http://localhost:5000/albums';
         axios.get(path)
         .then((res) => {
-            console.log(res.data)
-            console.log(typeof res.data)
             this.albums = res.data.albums;
-            console.log(this.albums)
         })
         .catch((err)=> {
             console.error(err)
