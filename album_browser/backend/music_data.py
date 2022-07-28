@@ -60,7 +60,7 @@ def _parse_songs_reponse(soup: bs4.BeautifulSoup)->list[dict]:
         info_dict = {
             'index' : index,
             'songName' : name,
-            'duration' : length
+            'duration' : length,
         }
         song_info.append(info_dict)
 

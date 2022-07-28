@@ -41,7 +41,8 @@
           <div class="list-group" v-for='song in songs' :key='song.index'>
             <song-list-item :index = 'song.index' 
                             :songName = 'song.songName'
-                            :duration = 'song.duration'>
+                            :duration = 'song.duration'
+                            :artistName = 'artistName'>
             </song-list-item>
           </div>
         </div>

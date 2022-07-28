@@ -19,32 +19,50 @@
                     <button type="button" class = 'btn' ><i class="bi bi-share"></i></button>
                 </div>
                 <div class = 'col-1'>
-                    <button type="button" class = 'btn' >{{favorited}}</button>
-                </div>
-                <div class = 'col-1'>
-                    <button type="button" class = 'btn' ><i class="bi bi-heart"></i></button>
+                    <button @click="favorite" 
+                            type="button" 
+                            class = 'btn'>
+                                <i :class="[isFavorited ? favIcon : notFavIcon]">
+                            </i>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-
+v-bind:style= 
 <script>
   import uniqueId from 'lodash.uniqueid';
+  import { store } from '@/store.js'
 
   export default {
     props: {
       songName: { required: true, type: String },
       index: {required: true, type: Number},
       duration: {required: true, type: String},
-      favorited: {default: false, type: Boolean}
+      favorited: {default: false, type: Boolean},
+      artistName: {required: true, type: String},
     },
     data() {
       return {
-        isFavorited: this.favorited,
-        id: uniqueId('song-')
+        isFavorited: this.songName in store.favSongs,
+        id: uniqueId('song-'),
+        favIcon: "bi bi-heart-fill text-primary",
+        notFavIcon: "bi bi-heart"
       };
+    },
+    methods: {
+        favorite() {
+            this.isFavorited = !this.isFavorited
+            if (this.isFavorited){
+                store.favSongs[this.songName] = this.artistName
+            }
+            else {
+               delete store.favSongs[this.songName]
+            }
+            console.log(store.favSongs)
+        }
     },
   };
 </script>
