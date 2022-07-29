@@ -40,6 +40,7 @@ def _parse_albums_reponse(json: dict)->list[dict]:
 fetch_albums()
 
 def fetch_songs(url: str = 'https://music.apple.com/us/album/entering-heaven-alive/1624743251?uo=2')->list[dict]:
+    """Fetch all songs and their durations for a given album"""
     resp = requests.get(url)
 
     soup = bs4.BeautifulSoup(resp.content, 'html.parser')
@@ -48,6 +49,7 @@ def fetch_songs(url: str = 'https://music.apple.com/us/album/entering-heaven-ali
 
 
 def _parse_songs_reponse(soup: bs4.BeautifulSoup)->list[dict]:
+    """Extract the relevant song info from the bs4 soup object"""
 
     song_names = [item.text for item in soup.select(
         '.songs-list-row__song-name')]

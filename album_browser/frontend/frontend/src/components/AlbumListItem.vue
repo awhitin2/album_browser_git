@@ -55,12 +55,10 @@
 <script>
   import uniqueId from 'lodash.uniqueid';
   import AlbumDetailsModal from "@/components/AlbumDetailsModal.vue";
-  import TestModal from "@/components/TestModal.vue";
 
   export default {
     components: {
         AlbumDetailsModal,
-        TestModal,
     },
     props: {
       albumName: { required: true, type: String },

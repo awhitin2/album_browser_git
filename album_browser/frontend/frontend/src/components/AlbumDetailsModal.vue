@@ -56,7 +56,7 @@ import axios from 'axios'
 import SongListItem from "@/components/SongListItem.vue";
 
 export default {
-  name: "ModalView",
+  name: "AlbumDetailsModal",
   props: {
       modalId: { required: true, type: String },
       albumName: { required: true, type: String },

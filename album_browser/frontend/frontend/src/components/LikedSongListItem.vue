@@ -8,15 +8,14 @@
                 <div class = 'col'>     
                     <h6 class='text-left text-light'>{{ songName }}</h6>
                 </div>
-                <div class = 'col-1'>
-                    <h6 class='text-light'>{{ duration }}</h6>
+                <div class = 'col-3 float-right'>
+                    <h6 class='text-light'>{{ artistName }}</h6>
                 </div>
                 <div class = 'col-1'>
                     <button @click="like" 
                             type="button" 
                             class = 'btn'>
-                                <i :class="[isLiked ? likedIcon : notLikedIcon]">
-                            </i>
+                                <i :class="[isLiked ? likedIcon : notLikedIcon]"></i>
                     </button>
                 </div>
             </div>
@@ -24,23 +23,20 @@
     </div>
 </template>
 
+
 <script>
-  import Vue from "vue";
-  import uniqueId from 'lodash.uniqueid';
   import { store } from '@/store.js'
 
   export default {
     props: {
       songName: { required: true, type: String },
       index: {required: true, type: Number},
-      duration: {required: true, type: String},
       liked: {default: false, type: Boolean},
       artistName: {required: true, type: String},
     },
     data() {
       return {
         isLiked: this.songName in store.likedSongs,
-        id: uniqueId('song-'),
         likedIcon: "bi bi-heart-fill text-danger",
         notLikedIcon: "bi bi-heart"
       };
@@ -49,26 +45,13 @@
         like() {
             this.isLiked = !this.isLiked
             if (this.isLiked){
-                Vue.set(store.likedSongs, this.songName, this.artistName)                
+                store.likedSongs[this.songName] = this.artistName
             }
             else {
-               Vue.delete(store.likedSongs, this.songName)
+               delete store.likedSongs[this.songName]
             }
-            console.log(store.likedSongs)
+            console.log(store.LikedSongs)
         }
     },
   };
-</script>
-
-// store.likedSongs[this.songName] = this.artistName
-
-// <!-- Add icon library -->
-// <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-// <!-- Use an element to toggle between a like/dislike icon -->
-// <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
-
-
-// function myFunction(x) {
-//   x.classList.toggle("fa-thumbs-down");
-// }
+</script>s
