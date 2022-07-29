@@ -2,7 +2,8 @@
     <div>
         <b-button   class="list-group-item list-group-item-action"
                     type='button' 
-                    v-b-modal='modalId'>
+                    v-b-modal='modalId'
+                    style="position: relative; z-index:1">
             <div class = 'container-fluid'>
                 <div class = 'row align-items-center'>
                     <div class = 'col-1'>      
@@ -10,9 +11,6 @@
                     </div>
                     <div class = 'col-1'>      
                         <img :src="imgSrcSmall" class="img-thumbnail mx-auto d-block"></img>
-                    </div>
-                    <div class = 'col-1'>      
-                        <button type="button" class="btn btn-primary z-index:10">Click</button>
                     </div>
                     <div class = 'col'>     
                         <div class='row'> 
@@ -23,17 +21,14 @@
                         </div>
                     </div>
                     <div class = 'col-1 ml-auto'>   
-                        <div class='row'>
-                            <div class = 'col'>
-                                <i class="bi bi-heart float-right"></i>  
-                            </div> 
-                        </div>
-                        <div class='row' width='100%'>
-                            <div class = 'col'>
-                                <i class="bi bi-share float-right"></i>  
-                            </div> 
-                        </div>
+                        <i class="bi bi-share float-right"></i>                             
                     </div>
+                    <button @click.stop="like" 
+                            type="button" 
+                            class = 'btn'>
+                                <i :class="[isLiked ? likedIcon : notLikedIcon]">
+                            </i>
+                    </button>
                 </div>
             </div>
         </b-button>
@@ -53,8 +48,10 @@
 
 
 <script>
+  import Vue from "vue";
   import uniqueId from 'lodash.uniqueid';
   import AlbumDetailsModal from "@/components/AlbumDetailsModal.vue";
+  import { store } from '@/store.js'
 
   export default {
     components: {
@@ -76,9 +73,27 @@
     },
     data() {
       return {
-        isFavorited: this.favorited,
-        modalId: uniqueId('modal-')
-    };
-  }
+        modalId: uniqueId('modal-'),
+        isLiked: this.alumName in store.likedAlbums,
+        likedIcon: "bi bi-heart-fill text-danger",
+        notLikedIcon: "bi bi-heart"
+      };
+    },
+    methods: {
+        clicked() {
+            console.log('clicked!')
+
+        },
+        like() {
+            this.isLiked = !this.isLiked
+            if (this.isLiked){
+                Vue.set(store.likedAlbums, this.albumName, this.artistName)                
+            }
+            else {
+               Vue.delete(store.likedAlbums, this.albumName)
+            }
+            console.log(store.likedAlbums)
+        }
+    },
   };
 </script>

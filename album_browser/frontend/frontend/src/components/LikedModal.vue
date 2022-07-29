@@ -22,6 +22,17 @@
       <br>
       <div class = 'row align-items-center'>
         <div class = 'col'>
+          <div class="list-group" v-for='(artist, album, index) of likedAlbums'>
+            <liked-album-list-item :index = 'index+1' 
+                                  :albumName = 'album'
+                                  :artistName = 'artist'>
+            </liked-album-list-item>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class = 'row align-items-center'>
+        <div class = 'col'>
           <h4 class='text-center'>Liked Songs</h4>
         </div>
       </div>
@@ -32,15 +43,15 @@
       <br>
       <div class = 'row align-items-center'>
         <div class = 'col'>
-          
-          <div class="list-group" v-for='(artist, song) of likedSongs'>
-            <liked-song-list-item :index = '1' 
+          <div class="list-group" v-for='(artist, song, index) of likedSongs'>
+            <liked-song-list-item :index = 'index+1' 
                                   :songName = 'song'
                                   :artistName = 'artist'>
             </liked-song-list-item>
           </div>
         </div>
       </div>
+      <br>
       <button class='btn btn-primary btn-block' type="button">Download</button>
     </div>
   </b-modal>
@@ -49,12 +60,14 @@
 
 <script>
   import LikedSongListItem from "@/components/LikedSongListItem.vue";
+  import LikedAlbumListItem from "@/components/LikedAlbumListItem.vue";
   import { store } from '@/store.js'
   
   export default {
     name: "LikedModal",
     components: {
-      LikedSongListItem
+      LikedSongListItem,
+      LikedAlbumListItem
     },
     data() {
       return {
