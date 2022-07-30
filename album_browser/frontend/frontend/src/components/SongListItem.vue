@@ -54,21 +54,9 @@
             else {
                Vue.delete(store.likedSongs, this.songName)
             }
+            console.log(store.likedSongs.length)
             console.log(store.likedSongs)
         }
     },
   };
 </script>
-
-// store.likedSongs[this.songName] = this.artistName
-
-// <!-- Add icon library -->
-// <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-// <!-- Use an element to toggle between a like/dislike icon -->
-// <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
-
-
-// function myFunction(x) {
-//   x.classList.toggle("fa-thumbs-down");
-// }

@@ -74,19 +74,18 @@
     data() {
       return {
         modalId: uniqueId('modal-'),
-        isLiked: this.alumName in store.likedAlbums,
         likedIcon: "bi bi-heart-fill text-danger",
         notLikedIcon: "bi bi-heart"
       };
     },
+    computed: {
+        isLiked: function() {
+            return this.albumName in store.likedAlbums
+		}
+    },
     methods: {
-        clicked() {
-            console.log('clicked!')
-
-        },
         like() {
-            this.isLiked = !this.isLiked
-            if (this.isLiked){
+            if (!this.isLiked){
                 Vue.set(store.likedAlbums, this.albumName, this.artistName)                
             }
             else {

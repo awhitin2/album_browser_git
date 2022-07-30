@@ -25,6 +25,7 @@
 
 
 <script>
+  import Vue from "vue";
   import { store } from '@/store.js'
 
   export default {
@@ -43,12 +44,11 @@
     },
     methods: {
         like() {
-            this.isLiked = !this.isLiked
-            if (this.isLiked){
-                store.likedAlbums[this.albumName] = this.artistName
+            if (!this.isLiked){
+                Vue.set(store.likedAlbums, this.albumName, this.artistName)                
             }
             else {
-               delete store.likedAlbums[this.albumName]
+               Vue.delete(store.likedAlbums, this.albumName)
             }
             console.log(store.likedAlbums)
         }
