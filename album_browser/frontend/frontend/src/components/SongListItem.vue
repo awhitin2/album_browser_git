@@ -54,8 +54,6 @@
             else {
                Vue.delete(store.likedSongs, this.songName)
             }
-            console.log(store.likedSongs.length)
-            console.log(store.likedSongs)
         }
     },
   };

@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class = 'col-1 ml-auto'>   
-                        <i class="bi bi-share float-right"></i>                             
+                        <i class="bi bi-share float-aasdflkjsdaright"></i>                             
                     </div>
                     <button @click.stop="like" 
                             type="button" 

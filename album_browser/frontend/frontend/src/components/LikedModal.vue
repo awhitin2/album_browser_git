@@ -10,14 +10,14 @@
             title='Album Name'>
 
     <div class='container-fluid'>
-      <div class = 'row align-items-center'>
+      <div class = 'row align-items-center"'>
         <div class = 'col'>
           <h4 class='text-center'>Liked Albums</h4>
         </div>
       </div>
       
       <hr class='bg-light'>
-      <h5 v-if='Object.keys(likedAlbums).length === 0' 
+      <h5 v-if='noLikedAlbums' 
           class='text-warning'>You have not yet liked any albums</h5>
       <br>
       <div class = 'row align-items-center'>
@@ -31,13 +31,15 @@
         </div>
       </div>
       <br>
+      <button v-if='!noLikedAlbums' @click='unlikeAlbums' class='btn btn-warning btn-block' type="button">Unlike All Albums</button>
+      <br v-if='!noLikedAlbums'>
       <div class = 'row align-items-center'>
         <div class = 'col'>
           <h4 class='text-center'>Liked Songs</h4>
         </div>
       </div>
       <hr class='bg-light'>
-      <h5 v-if='Object.keys(likedSongs).length === 0' 
+      <h5 v-if='noLikedSongs' 
           class='text-warning'>You have not yet liked any songs
       </h5>
       <br>
@@ -52,13 +54,14 @@
         </div>
       </div>
       <br>
-      <button class='btn btn-primary btn-block' type="button">Download</button>
+      <button v-if='!noLikedSongs' @click='unlikeSongs' class='btn btn-warning btn-block' type="button">Unlike All Songs</button>
     </div>
   </b-modal>
 </template>
 
 
 <script>
+  import Vue from "vue";
   import LikedSongListItem from "@/components/LikedSongListItem.vue";
   import LikedAlbumListItem from "@/components/LikedAlbumListItem.vue";
   import { store } from '@/store.js'
@@ -73,13 +76,26 @@
       return {
         likedSongs: store.likedSongs,
         likedAlbums: store.likedAlbums,
-        noLikedAlbums: Object.keys(store.likedAlbums).length === 0,
+        likedIcon: "bi bi-heart-fill text-danger",
+        notLikedIcon: "bi bi-heart"
       };  
     },
+    computed: {
+        noLikedAlbums: function() {
+            return Object.keys(store.likedAlbums).length === 0
+		    },
+        noLikedSongs: function() {
+            return Object.keys(store.likedSongs).length === 0
+		    }
+    },
     methods: {
+        unlikeSongs: function() {
+            for (var song in store.likedSongs) Vue.delete(store.likedSongs, song);
+        },
+        unlikeAlbums: function() {
+            for (var album in store.likedAlbums) Vue.delete(store.likedAlbums, album);
+        }
     },
   }
 
 </script>
-
-
