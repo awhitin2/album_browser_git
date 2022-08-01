@@ -96,19 +96,18 @@ export default {
   methods : {
     // Fetches albums from server
     getAlbums() {
-        const path = 'http://localhost:5000/albums';
-        axios.get(path)
-        .then((res) => {
-            this.albums = res.data.albums;
-        })
-        .catch((err)=> {
-            console.error(err)
-        })
+      const path = 'http://localhost:5000/albums';
+      axios.get(path)
+      .then((res) => {
+        this.albums = res.data.albums;
+      })
+      .catch((err)=> {
+        console.error(err)
+      })
     }
   },
   created(){
-      this.getAlbums();
+    this.getAlbums();
   }
-
 };
 </script>

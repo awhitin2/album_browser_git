@@ -89,21 +89,21 @@
     },
     computed: {
         noLikedAlbums: function() {
-            return Object.keys(store.likedAlbums).length === 0
+          return Object.keys(store.likedAlbums).length === 0
 		    },
         noLikedSongs: function() {
-            return Object.keys(store.likedSongs).length === 0
+          return Object.keys(store.likedSongs).length === 0
 		    }
     },
     methods: {
-        // remove all songs from liked list
-        unlikeSongs: function() {
-            for (var song in store.likedSongs) Vue.delete(store.likedSongs, song);
-        },
-        // remove all albums from liked list
-        unlikeAlbums: function() {
-            for (var album in store.likedAlbums) Vue.delete(store.likedAlbums, album);
-        }
+      // remove all songs from liked list
+      unlikeSongs: function() {
+        for (var song in store.likedSongs) Vue.delete(store.likedSongs, song);
+      },
+      // remove all albums from liked list
+      unlikeAlbums: function() {
+        for (var album in store.likedAlbums) Vue.delete(store.likedAlbums, album);
+      }
     },
   }
 

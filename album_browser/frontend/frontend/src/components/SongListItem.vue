@@ -2,29 +2,28 @@
 <!-- List item that populates the AblumDetailsModal with song information-->
 
 <template>
-    <div class="list-group-item">
-        <div class = 'container-fluid'>
-            <div class = 'row align-items-center'>
-                <div class = 'col-1'>      
-                    <h6 class='text-light text-center'>{{ index }}</h6>
-                </div>
-                <div class = 'col'>     
-                    <h6 class='text-left text-light'>{{ songName }}</h6>
-                </div>
-                <div class = 'col-1'>
-                    <h6 class='text-light'>{{ duration }}</h6>
-                </div>
-                <div class = 'col-1'>
-                    <button @click="toggleLike" 
-                            type="button" 
-                            class = 'btn'>
-                                <i :class="[isLiked ? likedIcon : notLikedIcon]">
-                            </i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="list-group-item">
+		<div class = 'container-fluid'>
+			<div class = 'row align-items-center'>
+				<div class = 'col-1'>      
+					<h6 class='text-light text-center'>{{ index }}</h6>
+				</div>
+				<div class = 'col'>     
+					<h6 class='text-left text-light'>{{ songName }}</h6>
+				</div>
+				<div class = 'col-1'>
+					<h6 class='text-light'>{{ duration }}</h6>
+				</div>
+				<div class = 'col-1'>
+					<button @click="toggleLike" 
+									type="button" 
+									class = 'btn'>
+										<i :class="[isLiked ? likedIcon : notLikedIcon]"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -50,15 +49,15 @@
     },
     methods: {
         // Add or remove song from the list of liked albums
-        toggleLike() {
-            this.isLiked = !this.isLiked
-            if (this.isLiked){
-                Vue.set(store.likedSongs, this.songName, this.artistName)                
-            }
-            else {
-               Vue.delete(store.likedSongs, this.songName)
-            }
-        }
+			toggleLike() {
+				this.isLiked = !this.isLiked
+				if (this.isLiked){
+					Vue.set(store.likedSongs, this.songName, this.artistName)                
+				}
+				else {
+					Vue.delete(store.likedSongs, this.songName)
+				}
+			}
     },
   };
 </script>

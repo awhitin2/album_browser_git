@@ -85,24 +85,24 @@ export default {
     // Returns a list of song objects from the cache if available, 
     // else from the server
     getSongs() {
-        if (store[this.albumName]) {
-          this.songs = store[this.albumName]
-        }
-        else {
-          const path = 'http://localhost:5000/songs';
-          axios.get(path, { params: { answer: this.albumLink } })
-          .then((res) => {
-              this.songs = res.data.songs;
-              store[this.albumName] = this.songs
-          })
-          .catch((err)=> {
-              console.error(err)
-          })
-        }
+      if (store[this.albumName]) {
+        this.songs = store[this.albumName]
+      }
+      else {
+        const path = 'http://localhost:5000/songs';
+        axios.get(path, { params: { answer: this.albumLink } })
+        .then((res) => {
+          this.songs = res.data.songs;
+          store[this.albumName] = this.songs
+        })
+        .catch((err)=> {
+          console.error(err)
+        })
+      }
     }
   },
   mounted(){
-      this.getSongs();
+    this.getSongs();
   }
 }
 </script>
