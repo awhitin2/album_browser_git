@@ -39,7 +39,7 @@ def _parse_albums_reponse(json: dict)->list[dict]:
     
 fetch_albums()
 
-def fetch_songs(url: str = 'https://music.apple.com/us/album/entering-heaven-alive/1624743251?uo=2')->list[dict]:
+def fetch_songs(url: str)->list[dict]:
     """Fetch all songs and their durations for a given album"""
     resp = requests.get(url)
 
