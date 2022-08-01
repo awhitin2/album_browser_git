@@ -11,11 +11,6 @@ app.config.from_object(__name__)
 CORS(app, resources={r"/*":{'origins':'*'}})
 
 
-@app.route('/', methods=['GET'])
-def greetings():
-    return('Hello, world!')
-
-
 @app.route('/albums', methods=['GET'])
 def get_albums():
     albums = music_data.fetch_albums()

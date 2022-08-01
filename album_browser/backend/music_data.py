@@ -37,7 +37,6 @@ def _parse_albums_reponse(json: dict)->list[dict]:
         albums.append(album_info)
     return albums
     
-fetch_albums()
 
 def fetch_songs(url: str)->list[dict]:
     """Fetch all songs and their durations for a given album"""
