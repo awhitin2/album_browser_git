@@ -13,6 +13,9 @@
         <a class="navbar-brand" 
             href="#"><span 
             class="mb-0 h2">Top 100 Albums</span></a>
+        <form class="form-inline ml-auto">
+          <input class="form-control mr-sm-2" v-model='input' type="search" placeholder="Search" aria-label="Search">
+        </form>
         <b-button type="button" 
                 class="btn btn-success" 
                 v-b-modal="'liked-modal'">Liked
@@ -20,7 +23,7 @@
       </div>
     </nav>
     <div class="home">
-      <div class="list-group" v-for='item in albums' :key='item.index'>
+      <div class="list-group" v-for='item in filteredAlbums' :key='item.index'>
         <album-list-item  :index = 'item.index' 
                           :albumName = 'item.albumName' 
                           :albumLink = 'item.albumLink' 
@@ -64,7 +67,15 @@ export default {
     return {
       albums: [],
       modalId: uniqueId('modal-'),
+      input: '',
     };
+  },
+  computed: {
+    filteredAlbums: function() {
+      return this.albums.filter(album =>
+          album.albumName.toLowerCase().includes(this.input.toLowerCase()) ||
+          album.artistName.toLowerCase().includes(this.input.toLowerCase()))
+    }
   },
   methods : {
     getAlbums() {
@@ -78,7 +89,7 @@ export default {
         })
     }
   },
-  created(){
+  mounted(){
       this.getAlbums();
   }
 

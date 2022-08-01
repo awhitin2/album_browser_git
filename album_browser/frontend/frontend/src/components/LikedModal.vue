@@ -4,18 +4,18 @@
 
 <template>
   <b-modal  id='liked-modal'
-            size = xl
+            size = lg
             hide-header
             hide-footer
             title='Album Name'>
 
     <div class='container-fluid'>
       <div class = 'row align-items-center"'>
-        <div class = 'col-2'></div>
+        <div class = 'col-3'></div>
         <div class = 'col'>
           <h4 class='text-center'>Liked Albums</h4>
         </div>
-        <div class = 'col-2 float-right'>
+        <div class = 'col-3 float-right'>
           <button v-if='!noLikedAlbums' @click='unlikeAlbums' class='btn btn-warning' type="button text-right">Unlike All Albums</button>
         </div>
       </div>
@@ -38,11 +38,11 @@
       <br>
       <br v-if='!noLikedAlbums'>
       <div class = 'row align-items-center'>
-        <div class = 'col-2'></div>
+        <div class = 'col-3'></div>
         <div class = 'col'>
           <h4 class='text-center'>Liked Songs</h4>
         </div>
-        <div class = 'col-2 float-right'>
+        <div class = 'col-3 float-right'>
           <button v-if='!noLikedSongs' @click='unlikeSongs' class='btn btn-warning' type="button text-right">Unlike All Songs</button>
         </div>
       </div>
