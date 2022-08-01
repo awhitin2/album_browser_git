@@ -1,4 +1,4 @@
-# ablum_browser_git
+# album_browser_git
 
 A simple web app to display apple's current top albums from this url: 'https://itunes.apple.com/us/rss/topalbums/limit=100/json'.
 
