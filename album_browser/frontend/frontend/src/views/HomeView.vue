@@ -72,9 +72,13 @@ export default {
   },
   computed: {
     filteredAlbums: function() {
+      const inputs = this.input.toLowerCase().split(' ')
+      console.log(inputs)
       return this.albums.filter(album =>
-          album.albumName.toLowerCase().includes(this.input.toLowerCase()) ||
-          album.artistName.toLowerCase().includes(this.input.toLowerCase()))
+          inputs.every(input => 
+          album.albumName.toLowerCase().includes(input) ||
+          album.artistName.toLowerCase().includes(input))
+      )
     }
   },
   methods : {
