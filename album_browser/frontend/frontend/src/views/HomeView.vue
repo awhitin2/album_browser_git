@@ -22,7 +22,12 @@
         </b-button>
       </div>
     </nav>
-    <div class="home">
+    <div v-if='!filteredAlbums.length && input !==""' class="card">
+      <div class="card-body">
+        <h4 class='text-center'>No matching results for "{{input}}"</h4>
+      </div>
+    </div>
+    <div class="list-container">
       <div class="list-group" v-for='item in filteredAlbums' :key='item.index'>
         <album-list-item  :index = 'item.index' 
                           :albumName = 'item.albumName' 
@@ -39,19 +44,12 @@
         </album-list-item>
       </div>
     </div>
-
-  <!-- The modal -->
-
-  <liked-modal></liked-modal>
-  
-  
+  <liked-modal></liked-modal> 
   </div>
 </template>
 
-
-
 <script>
-// @ is an alias to /src
+
 import axios from 'axios'
 import uniqueId from 'lodash.uniqueid';
 import AlbumListItem from "@/components/AlbumListItem.vue";
@@ -72,14 +70,25 @@ export default {
   },
   computed: {
     filteredAlbums: function() {
+      const sorted = [];
       const inputs = this.input.toLowerCase().split(' ')
-      console.log(inputs)
-      return this.albums.filter(album =>
-          inputs.every(input => 
-          album.albumName.toLowerCase().includes(input) ||
-          album.artistName.toLowerCase().includes(input))
-      )
-    }
+
+      for (const album of this.albums) {
+        album.searchRank = 0
+        for (const input of inputs) {
+          if (input != '') {
+            if (album.albumName.toLowerCase().includes(input) ||
+              album.artistName.toLowerCase().includes(input)) {
+              album.searchRank ++
+            }
+          }
+        }
+        if (album.searchRank > 0 || this.input === '') {
+          sorted.push(album)
+          }
+      }      
+      return sorted.sort((a,b) => (b.searchRank-a.searchRank))
+    },
   },
   methods : {
     getAlbums() {
@@ -93,7 +102,7 @@ export default {
         })
     }
   },
-  mounted(){
+  created(){
       this.getAlbums();
   }
 

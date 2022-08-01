@@ -23,7 +23,7 @@
       
       <hr class='bg-light'>
       <h5 v-if='noLikedAlbums' 
-          class='text-warning'>You have not yet liked any albums</h5>
+          class='text-warning'>You have not liked any albums</h5>
       <br>
       <div class = 'row align-items-center'>
         <div class = 'col'>
@@ -48,7 +48,7 @@
       </div>
       <hr class='bg-light'>
       <h5 v-if='noLikedSongs' 
-          class='text-warning'>You have not yet liked any songs
+          class='text-warning'>You have not liked any songs
       </h5>
       <br>
       <div class = 'row align-items-center'>

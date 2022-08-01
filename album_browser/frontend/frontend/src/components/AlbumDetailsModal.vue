@@ -1,6 +1,6 @@
 <template>
   <b-modal :id="modalId"
-            size = xl
+            size = lg
             hide-footer
             hide-header
             title='Album Name'>
@@ -53,7 +53,8 @@
 
 <script>
 import axios from 'axios'
-import SongListItem from "@/components/SongListItem.vue";
+import SongListItem from "@/components/SongListItem.vue"
+import { store } from '@/store.js'
 
 export default {
   name: "AlbumDetailsModal",
@@ -79,14 +80,20 @@ export default {
   },
   methods : {
     getSongs() {
-        const path = 'http://localhost:5000/songs';
-        axios.get(path, { params: { answer: this.albumLink } })
-        .then((res) => {
-            this.songs = res.data.songs;
-        })
-        .catch((err)=> {
-            console.error(err)
-        })
+        if (store[this.albumName]) {
+          this.songs = store[this.albumName]
+        }
+        else {
+          const path = 'http://localhost:5000/songs';
+          axios.get(path, { params: { answer: this.albumLink } })
+          .then((res) => {
+              this.songs = res.data.songs;
+              store[this.albumName] = this.songs
+          })
+          .catch((err)=> {
+              console.error(err)
+          })
+        }
     }
   },
   mounted(){
