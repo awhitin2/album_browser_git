@@ -20,15 +20,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class = 'col-1 ml-auto'>   
-                        <i class="bi bi-share float-aasdflkjsdaright"></i>                             
+                    <div class = 'col-1 text-center'>
+                        <button @click.stop="like" 
+                                type="button" 
+                                class = 'btn text-center'>
+                                    <i :class="[isLiked ? likedIcon : notLikedIcon]">
+                                </i>
+                        </button>
                     </div>
-                    <button @click.stop="like" 
-                            type="button" 
-                            class = 'btn'>
-                                <i :class="[isLiked ? likedIcon : notLikedIcon]">
-                            </i>
-                    </button>
                 </div>
             </div>
         </b-button>
