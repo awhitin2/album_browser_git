@@ -1,3 +1,5 @@
+<!-- List item that populates the LikedModal with album information for liked albums-->
+
 <template>
     <div class="list-group-item">
         <div class = 'container-fluid'>
@@ -12,7 +14,7 @@
                     <h6 class='text-light'>{{ artistName }}</h6>
                 </div>
                 <div class = 'col-1'>
-                    <button @click="like" 
+                    <button @click="toggleLike" 
                             type="button" 
                             class = 'btn'>
                                 <i :class="[isLiked ? likedIcon : notLikedIcon]"></i>
@@ -43,7 +45,8 @@
       };
     },
     methods: {
-        like() {
+        // Add or remove album from the list of liked albums
+        toggleLike() {
             if (!this.isLiked){
                 Vue.set(store.likedAlbums, this.albumName, this.artistName)                
             }

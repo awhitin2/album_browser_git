@@ -1,6 +1,6 @@
 
-// Songs un-liked from the like Modal do not disappear without adding another song from elsewhere
-
+<!-- Modal opened when user clicks "Liked" button on HomeView
+     Displays any songs or albums the user has liked -->
 
 <template>
   <b-modal  id='liked-modal'
@@ -96,9 +96,11 @@
 		    }
     },
     methods: {
+        // remove all songs from liked list
         unlikeSongs: function() {
             for (var song in store.likedSongs) Vue.delete(store.likedSongs, song);
         },
+        // remove all albums from liked list
         unlikeAlbums: function() {
             for (var album in store.likedAlbums) Vue.delete(store.likedAlbums, album);
         }

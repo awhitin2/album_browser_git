@@ -1,3 +1,6 @@
+
+<!-- Modal opened when user selects an AlbumListItem from the HomeView -->
+
 <template>
   <b-modal :id="modalId"
             size = lg
@@ -79,6 +82,8 @@ export default {
     };
   },
   methods : {
+    // Returns a list of song objects from the cache if available, 
+    // else from the server
     getSongs() {
         if (store[this.albumName]) {
           this.songs = store[this.albumName]

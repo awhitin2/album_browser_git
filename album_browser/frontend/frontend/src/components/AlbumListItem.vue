@@ -1,3 +1,6 @@
+
+<!-- List item that populates the HomeView with album information-->
+
 <template>
     <div>
         <b-button   class="list-group-item list-group-item-action"
@@ -21,7 +24,7 @@
                         </div>
                     </div>
                     <div class = 'col-1 text-center'>
-                        <button @click.stop="like" 
+                        <button @click.stop="toggleLike" 
                                 type="button" 
                                 class = 'btn text-center'>
                                     <i :class="[isLiked ? likedIcon : notLikedIcon]">
@@ -83,7 +86,8 @@
 		}
     },
     methods: {
-        like() {
+        // Add or remove album from the list of liked albums
+        toggleLike() {
             if (!this.isLiked){
                 Vue.set(store.likedAlbums, this.albumName, this.artistName)                
             }

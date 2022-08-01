@@ -1,3 +1,6 @@
+
+<!-- List item that populates the AblumDetailsModal with song information-->
+
 <template>
     <div class="list-group-item">
         <div class = 'container-fluid'>
@@ -12,7 +15,7 @@
                     <h6 class='text-light'>{{ duration }}</h6>
                 </div>
                 <div class = 'col-1'>
-                    <button @click="like" 
+                    <button @click="toggleLike" 
                             type="button" 
                             class = 'btn'>
                                 <i :class="[isLiked ? likedIcon : notLikedIcon]">
@@ -46,7 +49,8 @@
       };
     },
     methods: {
-        like() {
+        // Add or remove song from the list of liked albums
+        toggleLike() {
             this.isLiked = !this.isLiked
             if (this.isLiked){
                 Vue.set(store.likedSongs, this.songName, this.artistName)                

@@ -7,7 +7,7 @@
           crossorigin="anonymous">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" 
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />      
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand" 
@@ -69,6 +69,9 @@ export default {
     };
   },
   computed: {
+    // Returns a sorted list of album info objects that match the search input
+    // Objects are ranked and sorted high to low according 
+    // the number of search terms they contain
     filteredAlbums: function() {
       const sorted = [];
       const inputs = this.input.toLowerCase().split(' ')
@@ -91,6 +94,7 @@ export default {
     },
   },
   methods : {
+    // Fetches albums from server
     getAlbums() {
         const path = 'http://localhost:5000/albums';
         axios.get(path)
