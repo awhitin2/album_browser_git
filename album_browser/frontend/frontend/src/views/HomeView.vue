@@ -39,8 +39,7 @@
                           :imgSrcLarge = 'item.imgSrcLarge' 
                           :price = 'item.price'
                           :category = 'item.category'
-                          :releaseDate = 'item.releaseDate'
-                          :favorited = 'item.favorited'>
+                          :releaseDate = 'item.releaseDate'>
         </album-list-item>
       </div>
     </div>

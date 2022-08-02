@@ -64,7 +64,6 @@
       albumId: { required: true, type: String },
       artistName: { required: true, type: String },
       artistLink: { required: true, type: String },
-      favorited: { default: true, type: Boolean },
       imgSrcSmall: {required: true, type: String},
       imgSrcLarge: {required: true, type: String},
       price: {required: true, type: String},

@@ -27,7 +27,6 @@ def _parse_albums_reponse(json: dict)->list[dict]:
             'price' : entry['im:price']['label'],
             'category' : entry['category']['attributes']['label'],
             'releaseDate' : entry['im:releaseDate']['attributes']['label'],
-            'favorited': False,
         }
         try:
             album_info['artistLink'] = entry['im:artist']['attributes']['href']

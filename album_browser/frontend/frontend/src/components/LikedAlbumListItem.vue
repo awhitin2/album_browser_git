@@ -34,7 +34,6 @@
     props: {
       albumName: { required: true, type: String },
       index: {required: true, type: Number},
-      liked: {default: false, type: Boolean},
       artistName: {required: true, type: String},
     },
     data() {

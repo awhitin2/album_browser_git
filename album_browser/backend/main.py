@@ -20,7 +20,7 @@ def get_albums():
 @app.route('/songs', methods=['GET'])
 def get_songs():
     args = request.args
-    songs = music_data.fetch_songs(args['answer'])
+    songs = music_data.fetch_songs(args['link'])
     return({'songs': songs})
 
 

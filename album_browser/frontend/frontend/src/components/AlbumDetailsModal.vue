@@ -90,7 +90,7 @@ export default {
       }
       else {
         const path = 'http://localhost:5000/songs';
-        axios.get(path, { params: { answer: this.albumLink } })
+        axios.get(path, { params: { link: this.albumLink } })
         .then((res) => {
           this.songs = res.data.songs;
           store[this.albumName] = this.songs
